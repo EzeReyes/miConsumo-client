@@ -19,23 +19,23 @@ export const router = createBrowserRouter([
         element: <Layout />,
         children: [
             {
-                path: 'register',
+                path: './register',
                 element: <Register />
             },
             {
-                path: 'login',
+                path: './login',
                 element: <Login />
             },
             {
-                path: 'reset-password',
+                path: './reset-password',
                 element: <ResetPassword />
             },
             {
-                path: 'reset-password/:token',
+                path: './reset-password/:token',
                 element: <NewPassword />
             },
             {
-                path: '/confirmar/:token',
+                path: './confirmar/:token',
                 element: <Confirmar />
             },
             {
@@ -45,21 +45,21 @@ export const router = createBrowserRouter([
                 // action: updateAvailabilityAction
             },
             {
-                path: 'expense/detail',
+                path: './expense/detail',
                 element: <ExpensesDetail />
             },
             {
-                path: 'expense/new',
+                path: './expense/new',
                 element: <NewExpense />,
             },
             {
-                path: 'expense/:id/edit', //ROA Pattern - Resource-oriented design
+                path: './expense/:id/edit', //ROA Pattern - Resource-oriented design
                 element: <EditExpense />,
                 // loader: editProductLoader,
                 // action: editProductAction
             },
             {
-                path: '/personaldata',
+                path: './personaldata',
                 element: <PersonalData />
             },
             {
