@@ -67,8 +67,8 @@ if (result.data.getUser.success) {
     const { name } = result.data.getUser.user;
     setMessage([`Bienvenido, ${name}`]);
     setTimeout(() => {
-        window.location.assign('/');
-//   window.location.href = './'; // fuerza una recarga completa del sitio
+        // window.location.assign('/');
+  window.location.href = '/'; // fuerza una recarga completa del sitio
     }, 3000);
 } else {
     setMessage([result.data.getUser.message || "Credenciales inválidas"]);
