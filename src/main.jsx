@@ -8,7 +8,8 @@ import { router } from './router';
 
 // 1. Crear el cliente de Apollo
 const client = new ApolloClient({
-  uri: 'https://miconsumo-server.onrender.com/graphql', // http://localhost:5050/graphql Cambiá esto si tu servidor está en otro puerto
+  uri: 'https://miconsumo-server.onrender.com/graphql',
+  // uri: 'http://localhost:5050/graphql' , 
   cache: new InMemoryCache(),
   credentials: "include", // IMPORTANTE para que se acepten cookies
 });
