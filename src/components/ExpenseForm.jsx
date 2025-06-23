@@ -14,12 +14,13 @@ const GET_CATEGORIES = gql`
 `;
 
 const GET_EXPENSES = gql`
-  query getExpenses {
-    getExpenses {
+  query getExpenses($user: ID!) {
+    getExpenses(user: $user) {
       id
       name
       cost
       category
+      user
     }
   }
 `;
@@ -30,8 +31,8 @@ const NEW_EXPENSE = gql`
   }
 `;
 
-export default function ExpenseForm({ setMessage }) {
-
+export default function ExpenseForm({ setMessage, userId }) {
+console.log(userId)
 const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -78,10 +79,11 @@ onError: (error) => {
         input: {
           name: form.name,
           cost: parseFloat(form.cost),
-          category: form.category
+          category: form.category,
+          user: userId
         }
       },
-      refetchQueries: [{ query: GET_EXPENSES }],
+      refetchQueries: [{ query: GET_EXPENSES, variables: { user: userId} }],
     })
 
         console.log("Resultado de la mutación:", result),

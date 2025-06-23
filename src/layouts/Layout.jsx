@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import diaDeLaSemana from "../components/diaDeLaSemana";
+import { diaDeLaSemana } from "../components/diaDeLaSemana";
 
 export default function Layout() {
 
@@ -24,7 +24,7 @@ export default function Layout() {
         <main className="flex-grow bg-gray-200 shadow">
             <Outlet />
         </main>
-        <footer className="flex flex-col items-center text-amber-500 justify-center p-2 bg-gray-500">By Ezequiel Reyes 2025</footer>
+        <footer className="flex flex-col items-center text-white text-shadow-2xs text-shadow-amber-500 justify-center p-2 bg-gray-500">By Ezequiel Reyes 2025</footer>
         </div>
         </>
     )

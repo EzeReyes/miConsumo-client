@@ -2,7 +2,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Login from "./pages/Login.jsx";
-import Expenses from "./pages/Expenses.jsx";
 import NewExpense from "./pages/NewExpense.jsx";
 import EditExpense from "./pages/EditExpense.jsx";
 import Confirmar from "./pages/Confirmar.jsx"
@@ -12,6 +11,8 @@ import NewPassword from "./pages/NewPassword.jsx"
 import PersonalData from "./pages/PersonalData.jsx";
 import ExpensesDetail from "./pages/ExpensesDetail.jsx";
 import Error from "./pages/Error.jsx";
+import Home from "./pages/Home.jsx";
+import NewTask from "./pages/NewTask.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
             },
             {
                 index: true,
-                element: <Expenses />,
+                element: <Home />,
                 // loader: productsLoader,
                 // action: updateAvailabilityAction
             },
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             {
                 path: '/personaldata',
                 element: <PersonalData />
+            },
+            {
+                path: 'task/new',
+                element: <NewTask />
             },
             {
                 path: '*',

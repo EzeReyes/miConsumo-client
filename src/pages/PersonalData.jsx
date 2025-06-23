@@ -3,7 +3,7 @@ import DataPersonalForm from '../components/DataPersonalForm';
 
 const PersonalData = () => {
   const { state } = useLocation();
-  const datos = state?.usuario;
+  const datos = state?.user;
 
   if (!datos) return <p>No hay datos para mostrar</p>;
 

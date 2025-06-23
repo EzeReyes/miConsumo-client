@@ -13,24 +13,6 @@ mutation updatedUser($id: ID!, $input: InputUser) {
 }
 `;
 
-const GET_TOKEN = gql `
-query {
-  getToken {
-    success
-    message
-    user {
-      id
-      name
-      surname
-      email
-      password
-    }
-  }
-}
-`
-
-
-
 export default function DataPersonalForm({datos}) {
 
 const navigate = useNavigate();
@@ -116,7 +98,6 @@ swal({
                         ...(pass.password && { password: pass.password })
                       }
                     },
-                    refetchQueries: [{ query: GET_TOKEN }],
                   })
         
                 swal("Usuario Editado", {

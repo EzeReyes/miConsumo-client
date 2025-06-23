@@ -1,17 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { gql, useQuery, useMutation } from "@apollo/client";
 import swal from 'sweetalert';
 import Toolbar from '../components/Toolbar';
 import { useState } from "react";
+import { obtenerFechaDesdeObjectId } from '../components/diaDeLaSemana';
 
 
 const GET_EXPENSES = gql`
-  query getExpenses {
-    getExpenses {
+  query getExpenses($user: ID!) {
+    getExpenses(user: $user) {
       id
       name
       cost
       category
+      user
     }
   }
 `;
@@ -25,8 +27,14 @@ mutation deleteExpense($id: ID!) {
 
 
 export default function ExpensesDetail() {
-  
-  const { data, loading, error } = useQuery(GET_EXPENSES);
+  const { state } = useLocation();
+  const id = state?.user?.id;  
+  const usuario = state?.user;
+  const { data, loading, error } = useQuery(GET_EXPENSES, {
+      variables: { user: id }, // ✅ Esto está bien
+      skip: !id                // ✅ Previene que la query corra sin ID
+    });
+
   const [fechaInferior, setFechaInferior] = useState('');
   const [fechaSuperior, setFechaSuperior] = useState('');
 
@@ -41,13 +49,7 @@ export default function ExpensesDetail() {
 
   const consumos = data?.getExpenses || [];
 
-  function obtenerFechaDesdeObjectId(objectId) {
-  // Los primeros 8 caracteres del ObjectId representan la fecha en segundos desde el Unix epoch
-  const timestampHex = objectId.toString().substring(0, 8);
-  const timestamp = parseInt(timestampHex, 16); // Convierte hex a decimal
-  const fecha = new Date(timestamp * 1000); // Convierte a milisegundos
-  return fecha;
-}
+
 
 function soloFecha(date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -107,8 +109,7 @@ console.log(suma)
   return (
   <>      
     <div className="grid grid-cols-1 md:grid-cols-[200px_minmax(900px,_1fr)_100px]">
-      <Toolbar />
-
+    <Toolbar user={usuario} />
       <div className="p-4 md:p-20">
         <div className="flex justify-between">
           <h2 className="text-4xl font-black text-slate-500">Consumos Filtrados</h2>
