@@ -21,7 +21,7 @@ const NEW_TASK = gql`
   }
 `;
 
-export default function ExpenseForm({ setMessage, userId }) {
+export default function TaskForm({ setMessage, userId }) {
 console.log(userId)
 const navigate = useNavigate();
 

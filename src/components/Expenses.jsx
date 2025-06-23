@@ -103,7 +103,7 @@ const Expenses = ({ user }) => {
                       <td className="p-2">{consumo.category}</td>
                       <td className="p-2">{fecha.toLocaleDateString()}</td>
                       <td className="p-2 flex gap-4 justify-center">
-                        <Link to={`/expense/${consumo.id}/edit`} title="Editar">📝</Link>
+                        <Link to={`/expense/${consumo.id}/edit`} state={{userId}} title="Editar">📝</Link>
                         <button onClick={() => handleDeleteExpense(consumo.id)} title="Eliminar">🗑️</button>
                       </td>
                     </tr>
@@ -128,7 +128,7 @@ const Expenses = ({ user }) => {
                 <p>Costo: ${consumo.cost}</p>
                 <p>Categoría: {consumo.category}</p>
                 <p>Fecha: {obtenerFechaDesdeObjectId(consumo.id).toLocaleDateString()}</p>
-                <Link to={`/expense/${consumo.id}/edit`} className="text-indigo-600 font-bold mt-2 block">Editar</Link>
+                <Link to={`/expense/${consumo.id}/edit`} state={{userId}} className="text-indigo-600 font-bold mt-2 block">Editar</Link>
               </div>
             )) : (
               <p>No existen consumos en el día</p>

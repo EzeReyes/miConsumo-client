@@ -25,12 +25,13 @@ query getExpensesByID($id: ID!) {
 `
 
 const GET_EXPENSES = gql`
-  query getExpenses {
-    getExpenses {
+  query getExpenses($user: ID!) {
+    getExpenses(user: $user) {
       id
       name
       cost
       category
+      user
     }
   }
 `;
@@ -43,7 +44,8 @@ mutation updatedExpense($id: ID!, $input: InputExpense) {
     }
 `
 
-export default function EditForm() {
+export default function EditForm({userId}) {
+  console.log(`El ID.... ${userId}`)
 
 const navigate = useNavigate();
 
@@ -60,6 +62,8 @@ const { data: expenseData, loading: loadingid, error: errorid } = useQuery(GET_E
   variables: { id },
 });
 
+
+console.log(`id de params ..... ${id}`)
 
 
 useEffect(() => {
@@ -105,10 +109,11 @@ swal({
         input: {
           name: form.name,
           cost: parseFloat(form.cost),
-          category: form.category
+          category: form.category,
+          user: userId
         }
       },
-      refetchQueries: [{ query: GET_EXPENSES }],
+      refetchQueries: [{ query: GET_EXPENSES, variables: {user: userId } }],
     })
       
         swal("Consumo Editado", {

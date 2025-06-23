@@ -13,6 +13,8 @@ import ExpensesDetail from "./pages/ExpensesDetail.jsx";
 import Error from "./pages/Error.jsx";
 import Home from "./pages/Home.jsx";
 import NewTask from "./pages/NewTask.jsx";
+import TaskDetail from "./pages/TaskDetail.jsx";
+import EditTask from "./pages/EditTask.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -66,6 +68,16 @@ export const router = createBrowserRouter([
             {
                 path: 'task/new',
                 element: <NewTask />
+            },
+                        {
+                path: 'task/detail',
+                element: <TaskDetail />
+            },
+            {
+                path: 'task/:id/edit', //ROA Pattern - Resource-oriented design
+                element: <EditTask />,
+                // loader: editProductLoader,
+                // action: editProductAction
             },
             {
                 path: '*',

@@ -4,7 +4,7 @@ import ExpenseForm from "../components/ExpenseForm";
 import ErrorMessage from "../components/ErrorMessage";
 
 
-export default function NewExpense({user}) {
+export default function NewExpense() {
   const [message, setMessage] = useState(null);
   const {state} = useLocation();
   const userId = state?.user?.id

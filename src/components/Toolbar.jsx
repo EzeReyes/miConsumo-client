@@ -55,6 +55,9 @@ const Toolbar = ({ user }) => {
           <li className={pathname === "/expense/detail" ? "hidden" : "block"}>
             <Link to="../expense/detail" state={{user}}>Consumos</Link>
           </li>
+          <li className={pathname === "/task/detail" ? "hidden" : "block"}>
+            <Link to="../task/detail" state={{user}}>Tareas</Link>
+          </li>
           <li className={pathname === "/" ? "hidden" : "block"}>
             <Link to="../">Volver a Home</Link>
           </li>
